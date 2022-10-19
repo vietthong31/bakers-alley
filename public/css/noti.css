@@ -1,0 +1,21 @@
+#noti {
+    outline: 1px solid black;
+    position: fixed;
+    right: 2.5em;
+    bottom: 2.5em;
+    color: white;
+    background-color: #0d6efd;
+    border-radius: 1.8em;
+}
+
+#noti p {
+    min-width: 200px;
+    padding: 0.4em;
+    padding-left: 1em;
+    margin: 0;
+    /* text-align: left; */
+}
+
+#noti.danger {
+    background-color: #bb2d3b;
+}
