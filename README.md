@@ -5,3 +5,4 @@
 - File database SQL: [db_banhang.sql](https://drive.google.com/file/d/18VrJBW_J1IQ22weCLdGzpi9cBiaM2_cI/view?usp=share_link)
 - Link video demo: [Kiểm tra kết thúc môn lập trình web](https://youtu.be/pvIzhQb9LAo)
 - Link báo cáo: [bao-cao.docx](https://docs.google.com/document/d/16_vnVniGCgSdgRZ6cHOjIBXO7s8BCbBL/edit?usp=share_link&ouid=117464800426447073007&rtpof=true&sd=true)
+- Link thuyết trình tiếng anh: [thuyet-trinh.docx](https://docs.google.com/document/d/1KqIutLrb4gawTGTqr2-ztCi5RpS_3ChT/edit?usp=share_link&ouid=117464800426447073007&rtpof=true&sd=true)
