@@ -10,6 +10,10 @@
     <x-admin.edit-form :action="route('type.update', ['type' => $type->id])">
         <x-admin.input type='number' name='id' id='id' label='ID' :value="$type->id" disable="true" />
         <x-admin.input type='text' name='name' id='name' label='Name' :value="$type->name" />
+        <div class="form-floating">
+            <textarea name="description" id="description" class="w-100 h-100 form-control">{{ $type->description }}</textarea>
+            <label for="description">Description</label>
+        </div>
         <x-admin.input type='file' name='image' id='image' label='Image' :value="$type->image" />
     </x-admin.edit-form>
 

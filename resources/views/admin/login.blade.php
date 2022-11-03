@@ -12,24 +12,24 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background: center/cover no-repeat url('/assets/dest/images/admin-bg.jpg')">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content" class="d-flex flex-column justify-content-center">
             <main>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
-                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card shadow p-3 border-0 rounded-lg mt-5">
                                 <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4">Login</h3>
+                                    <h3 class="text-center font-weight-light my-4">Quản lý Baker's Alley</h3>
                                 </div>
                                 <div class="card-body">
                                     <form action="{{ route('admin.login') }}" method="POST">
                                         @csrf
                                         <div class="form-floating mb-3">
                                             <input class="form-control" name="email" id="inputEmail" type="email"
-                                                value="{{ old('email') }}" />
-                                            <label for="inputEmail">Email address</label>
+                                                value="{{ old('email') }}" autofocus />
+                                            <label for="inputEmail">Email</label>
                                             <span class="error text-danger fs-7">
                                                 @error('email')
                                                     {{ $message }}
@@ -40,7 +40,7 @@
                                             <input class="form-control" name="password" id="inputPassword"
                                                 type="password"
                                                 placeholder="" />
-                                            <label for="inputPassword">Password</label>
+                                            <label for="inputPassword">Mật khẩu</label>
                                             <span class="error text-danger fs-7">
                                                 @error('password')
                                                     {{ $message }}
@@ -54,8 +54,8 @@
                                                 Password</label>
                                         </div> --}}
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="password.html">Forgot Password?</a>
-                                            <input type="submit" value="Login" class="btn btn-primary" />
+                                            {{-- <a class="small" href="password.html">Quên mật khẩu?</a> --}}
+                                            <input type="submit" value="Đăng nhập" class="btn btn-primary" />
                                         </div>
                                     </form>
                                     @if (session()->has('message'))

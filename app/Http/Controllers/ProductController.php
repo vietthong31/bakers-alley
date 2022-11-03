@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\TypeProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index', ['products' => Product::all()]);
+        return view('admin.product.index', ['products' => Product::all()->sortByDesc('id')]);
     }
 
     /**
@@ -100,6 +101,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $imagePath = public_path('assets/dest/images/' . $product->image);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+        $product->delete();
+        return redirect()->route('product.index')->with('success', "Đã xóa $product->name");
     }
 }

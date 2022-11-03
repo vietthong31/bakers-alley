@@ -9,24 +9,25 @@
                     <div class="col-sm-3">
                         <ul class="aside-menu">
                             @foreach ($types as $type)
-                                <li><a href="">{{ $type->name }}</a></li>
+                                <li><a href="/product-type/{{ $type->id }}">{{ $type->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="col-sm-9">
                         <div class="beta-products-list">
-                            <h4>Sản phẩm mới</h4>
+                            <h4>{{ $typeName }}</h4>
                             <div class="beta-products-details">
                                 {{-- <p class="pull-left">{{ count($newProducts) }} found</p> --}}
                                 <div class="clearfix"></div>
                             </div>
 
-                            @foreach ($newProducts as $product)
+                            @foreach ($products as $product)
                                 <div class="col-sm-4">
                                     <div class="single-item">
                                         <div class="single-item-header">
                                             <a href="product.html"><img
-                                                    src="assets/dest/images/products/{{ $product->image }}"
+                                                    src="/assets/dest/images/products/{{ $product->image }}"
+                                                    height="180px"
                                                     alt=""></a>
                                         </div>
                                         <div class="single-item-body">
@@ -47,7 +48,7 @@
                             @endforeach
                         </div> <!-- .beta-products-list -->
                         <div class="pager">
-                            {{ $newProducts->links() }}
+                            {{ $products->links() }}
                         </div>
 
                         <div class="space50">&nbsp;</div>

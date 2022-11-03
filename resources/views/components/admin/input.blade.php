@@ -1,6 +1,6 @@
 {{-- Input component --}}
 
-@props(['type', 'name', 'id', 'label', 'value', 'disable' => false, 'placeholder' => ''])
+@props(['type', 'name', 'id', 'label', 'value' => '', 'disable' => false, 'placeholder' => ''])
 
 @if ($type == 'file')
     <div class="mb-3">

@@ -25,7 +25,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.slide.create');
     }
 
     /**
@@ -92,6 +92,7 @@ class SlideController extends Controller
      */
     public function destroy(Slide $slide)
     {
-        //
+        $slide->delete();
+        return redirect()->route('slide.index')->with('success', "Đã xóa slide $slide->id");
     }
 }

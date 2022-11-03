@@ -1,5 +1,5 @@
 @php
-$user = auth()->user();
+    $user = auth()->user();
 @endphp
 
 <x-layout pageTitle="Thanh toán">
@@ -46,11 +46,6 @@ $user = auth()->user();
                         <div class="form-block">
                             <label for="phone">Điện thoại*</label>
                             <input type="text" name="phone" id="phone" value="{{ $user->phone }}" required>
-                        </div>
-
-                        <div class="form-block">
-                            <label for="notes">Ghi chú</label>
-                            <textarea name="note" id="note"></textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">

@@ -15,7 +15,7 @@
                 <td>Ordered</td>
                 <td>Total</td>
                 <td>Payment</td>
-                <td>Note</td>
+                <td>Status</td>
                 <td colspan="2"></td>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                     <td>{{ $bill->date_order }}</td>
                     <td>{{ $bill->total }}</td>
                     <td>{{ $bill->payment }}</td>
-                    <td>{{ $bill->note }}</td>
+                    <td>{{ $bill->status }}</td>
                     <td>
                         <x-admin.edit-link href="{{ route('bill.edit', ['bill' => $bill->id]) }}" />
                     </td>

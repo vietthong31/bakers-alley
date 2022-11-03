@@ -57,7 +57,7 @@ class BillController extends Controller
      */
     public function edit(Bill $bill)
     {
-        //
+        return view('admin.bill.edit', ['bill' => $bill]);
     }
 
     /**
@@ -69,7 +69,11 @@ class BillController extends Controller
      */
     public function update(Request $request, Bill $bill)
     {
-        //
+        $attributes = $request->validate([
+            'status' => 'required'
+        ]);
+        $bill->update($attributes);
+        return redirect()->route('bill.index')->with('success', "Cập nhật $bill->id");
     }
 
     /**
@@ -80,6 +84,7 @@ class BillController extends Controller
      */
     public function destroy(Bill $bill)
     {
-        //
+        $bill->delete();
+        return redirect()->route('bill.index')->with('success', "Đã xóa hóa đơn $bill->id");
     }
 }

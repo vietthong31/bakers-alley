@@ -7,6 +7,8 @@
         </ol>
     </x-slot>
 
+    <x-admin.add-link href="{{ route('type.create') }}" />
+
     <x-admin.table-container tableName="Types">
         <thead>
             <tr>

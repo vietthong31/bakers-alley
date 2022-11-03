@@ -17,11 +17,14 @@
                         <li>
                             <a href="#"><i class="fa fa-user"></i>{{ auth()->user()->email ?? '' }}</a>
                         </li>
+                        <li>
+                            <a href="{{ route('favoriteProduct') }}">Sản phẩm yêu thích</a>
+                        </li>
                         <li style="padding-top: 5px">
                             <form action="{{ route('user.logout') }}" method="post"
                                 style="display: block;height: 47px">
                                 @csrf
-                                <button type="submit" class="btn btn-light">Logout</button>
+                                <button type="submit" class="btn btn-light">Đăng xuất</button>
                             </form>
                         </li>
                     @endif
@@ -104,7 +107,6 @@
                 <ul class="l-inline ov">
                     <li><a href="/">Trang chủ</a></li>
                     <li><a href="/product-type">Sản phẩm</a></li>
-                    <li><a href="/about">Giới thiệu</a></li>
                     <li><a href="/contact">Liên hệ</a></li>
                 </ul>
                 <div class="clearfix"></div>

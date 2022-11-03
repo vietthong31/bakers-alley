@@ -26,6 +26,8 @@
         <div class="single-item-caption">
             <a class="add-to-cart pull-left" href="{{ route('cart.add', ['id' => $product->id]) }}"><i
                     class="fa fa-shopping-cart"></i></a>
+            <a class="add-to-favorite pull-left" href="{{ route('favor.add', ['id' => $product->id]) }}"><i
+                    class="fa fa-heart" aria-hidden="true"></i></a>
             <a class="beta-btn primary" href="/product/{{ $product->id }}">Chi tiết <i
                     class="fa fa-chevron-right"></i></a>
             <div class="clearfix"></div>

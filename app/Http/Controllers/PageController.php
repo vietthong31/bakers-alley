@@ -6,11 +6,15 @@ use App\Mail\Checkout;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Cart;
+use App\Models\FavoriteProduct;
 use App\Models\Product;
 use App\Models\TypeProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
+
+use function PHPSTORM_META\map;
 
 class PageController extends Controller
 {
@@ -67,11 +71,13 @@ class PageController extends Controller
         return view('page.contact');
     }
 
-    public function productType()
+    public function productType($id = 1)
     {
+        // dd(Product::where('id_type', $id)->get());
         return view('page.product-type', [
             'types' => TypeProduct::all(),
-            'newProducts' => Product::where('new', '1')->paginate(3)
+            'typeName' => TypeProduct::firstWhere('id', $id)->name,
+            'products' => Product::where('id_type', $id)->paginate(3)
         ]);
     }
 
@@ -114,7 +120,6 @@ class PageController extends Controller
                 'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
                 'address' => 'required',
                 'phone' => 'required',
-                'note' => 'nullable',
                 'payment_method' => 'required'
             ]);
             $newBill = Bill::create([
@@ -122,7 +127,7 @@ class PageController extends Controller
                 'date_order' => now(),
                 'total' => session('cart')->totalPrice,
                 'payment' => $attributes['payment_method'],
-                'note' => $attributes['note']
+                'status' => "Chờ lấy hàng",
             ]);
             foreach ($items as $item) {
                 BillDetail::create([
@@ -139,5 +144,27 @@ class PageController extends Controller
             session()->forget('cart');
             return redirect('/')->with('message', 'Đặt hàng thành công.');
         }
+    }
+
+    public function addToFavor(Request $request, $id)
+    {
+        FavoriteProduct::create([
+            'user_id' => Auth::user()->id,
+            'product_id' => $id,
+        ]);
+        return redirect('/')->with('message', "Thêm vào yêu thích $id");
+    }
+
+    public function favoriteProduct()
+    {
+        $userId = Auth::user()->id;
+        $favoriteProducts = FavoriteProduct::where('user_id', $userId)->get();
+        $products = $favoriteProducts->map(function ($item, $key) {
+            return $item->product;
+        });
+
+        return view('page.favorite-products', [
+            'products' => $products
+        ]);
     }
 }

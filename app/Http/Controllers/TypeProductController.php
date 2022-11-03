@@ -6,6 +6,7 @@ use App\Models\TypeProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\File;
 
 class TypeProductController extends Controller
 {
@@ -28,7 +29,7 @@ class TypeProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.type.create');
     }
 
     /**
@@ -39,7 +40,21 @@ class TypeProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'name' => ['required', 'min:5', Rule::unique('type_products', 'name')],
+            'description' => 'required',
+            'image' => 'image'
+        ]);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $name = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('assets/dest/images');
+            // dd($destinationPath);
+            $file->move($destinationPath, $name);
+            $attributes['image'] = $name;
+        }
+        TypeProduct::create($attributes);
+        return redirect()->route('type.index')->with('success', 'Thêm mới thành công');
     }
 
     /**
@@ -75,6 +90,7 @@ class TypeProductController extends Controller
     {
         $attributes = $request->validate([
             'name' => ['required', 'min:5', Rule::unique('type_products', 'name')->ignore($type->id)],
+            'description' => 'required',
             'image' => 'image'
         ]);
         // dd($attributes['image']->getClientOriginalExtension());
@@ -96,6 +112,11 @@ class TypeProductController extends Controller
      */
     public function destroy(TypeProduct $type)
     {
-        return 'test';
+        $imagePath = public_path('assets/dest/images/' . $type->image);
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+        $type->delete();
+        return redirect()->route('type.index')->with('success', "Đã xóa $type->name");
     }
 }

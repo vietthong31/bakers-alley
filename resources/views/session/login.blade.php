@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-block">
                             <label for="pwd">Password*</label>
-                            <input type="text" name="pwd" id="pwd" required>
+                            <input type="password" name="pwd" id="pwd" required>
                             @error('pwd')
                                 {{ $message }}
                             @enderror

@@ -1,6 +1,6 @@
 @props(['home' => false, 'pageTitle' => 'Bakery Shop'])
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -145,18 +145,10 @@
                         <h4 class="widget-title">Thông tin</h4>
                         <div>
                             <ul>
-                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Web
-                                        Design</a></li>
-                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Web
-                                        development</a></li>
-                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i>
-                                        Marketing</a></li>
-                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i> Tips</a>
-                                </li>
-                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i>
-                                        Resources</a></li>
-                                <li><a href="blog_fullwidth_2col.html"><i class="fa fa-chevron-right"></i>
-                                        Illustrations</a></li>
+                                <li><a href="#"><i class="fa fa-chevron-right"></i> Trang chủ</a></li>
+                                <li><a href="{{ route('product.type') }}"><i class="fa fa-chevron-right"></i> Sản
+                                        phẩm</a></li>
+                                <li><a href="/contact"><i class="fa fa-chevron-right"></i> Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -168,12 +160,9 @@
                             <div>
                                 <div class="contact-info">
                                     <i class="fa fa-map-marker"></i>
-                                    <p>90-92 Lê Thị Riêng, Bến Thành, Quận 1, SĐT: 0163 296 7751</p>
-                                    <p>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo, sed accusantium
-                                        repellendus quod, incidunt nobis cum in eveniet itaque voluptas obcaecati enim
-                                        atque, quaerat a voluptatem. Ducimus fuga commodi sequi.
-                                    </p>
+                                    <p>90-92 Lê Thị Riêng, Bến Thành, Quận 1, TP. HCM</p>
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <p>0163 296 7751</p>
                                 </div>
                             </div>
                         </div>
@@ -234,36 +223,23 @@
         })
     </script>
 
-    <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
-
-    <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
-
-    <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "109923881906167");
-        chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
-
-    <!-- Your SDK code -->
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                xfbml: true,
-                version: 'v15.0'
-            });
-        };
-
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = 'ede193a0842e3378c3a8f85855ee889675eeb4ce';
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() {
+                o._.push(arguments)
+            };
+            o._ = [];
+            s = d.getElementsByTagName('script')[0];
+            c = d.createElement('script');
+            c.type = 'text/javascript';
+            c.charset = 'utf-8';
+            c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
     </script>
 </body>
 
